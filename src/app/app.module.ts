@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 import {AdminModule } from './admin/admin.module';
 @NgModule({
   declarations: [
@@ -14,7 +13,6 @@ import {AdminModule } from './admin/admin.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatDatepickerModule,
     AdminModule
   ],
   providers: [],
