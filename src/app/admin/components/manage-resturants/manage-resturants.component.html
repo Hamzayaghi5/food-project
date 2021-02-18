@@ -1,1 +1,18 @@
-<p>manage-resturants works!</p>
+<br>
+<button mat-raised-button color="primary" (click)="showAddRest()">Add Resturant</button><br>
+ 
+<div class="wrapper">
+    <div class="leftDiv">
+        <br /><br />
+        <ul class="departments">
+            <li *ngFor="let rest of data">
+                <span class="badge" style="width: 20px">{{rest.Id}}</span> {{rest.Name}}
+                <button mat-raised-button color="primary" style="float:right;">delete</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="rightDiv">
+        <router-outlet></router-outlet>
+    </div>
+</div>
