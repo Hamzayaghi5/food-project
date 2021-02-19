@@ -1,0 +1,15 @@
+<div style="padding-left: 1%; border: 2px solid rgb(112, 37, 146) ;">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" [(ngModel)]="rest.Name" required>
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Address" [(ngModel)]="rest.Address" required>
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput placeholder="Phone" [(ngModel)]="rest.Phone" required>
+    </mat-form-field><br>
+    <button mat-raised-button color="primary" (click)="UpdateRest(rest)">Update</button>
+</div>

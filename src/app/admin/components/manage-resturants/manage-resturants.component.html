@@ -1,13 +1,14 @@
 <br>
 <button mat-raised-button color="primary" (click)="showAddRest()">Add Resturant</button><br>
- 
+
 <div class="wrapper">
-    <div class="leftDiv">
+    <div class="">
         <br /><br />
         <ul class="departments">
-            <li *ngFor="let rest of data">
+            <li *ngFor="let rest of data" [class.selected]="rest === selectedRest" (click)="onSelect(rest)">
                 <span class="badge" style="width: 20px">{{rest.Id}}</span> {{rest.Name}}
-                <button mat-raised-button color="primary" style="float:right;">delete</button>
+                <button mat-raised-button color="primary" style="float:right;"
+                    (click)="DeleteRest(rest)">delete</button>
             </li>
         </ul>
     </div>
