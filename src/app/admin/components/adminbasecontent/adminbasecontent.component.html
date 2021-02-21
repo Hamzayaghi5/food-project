@@ -13,18 +13,14 @@
     </button>
 </mat-toolbar>
 <mat-drawer-container class="example-container" autosize>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
     <mat-drawer #drawer class="example-sidenav" mode="side">
         <h6>Admin Page</h6><br>
         <ul>
             <li><a routerLink="/admin/mange-rests">Resturants</a></li>
             <li><a>Meals</a></li>
-
         </ul>
-
     </mat-drawer>
-    <div class="example-sidenav-content">
-
-        <router-outlet></router-outlet>
-    </div>
-
 </mat-drawer-container>

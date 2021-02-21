@@ -1,19 +1,42 @@
-<br>
-<button mat-raised-button color="primary" (click)="showAddRest()">Add Resturant</button><br>
-
-<div class="wrapper">
-    <div class="">
-        <br /><br />
-        <ul class="departments">
-            <li *ngFor="let rest of data" [class.selected]="rest === selectedRest" (click)="onSelect(rest)">
-                <span class="badge" style="width: 20px">{{rest.Id}}</span> {{rest.Name}}
-                <button mat-raised-button color="primary" style="float:right;"
-                    (click)="DeleteRest(rest)">delete</button>
-            </li>
-        </ul>
-    </div>
-
-    <div class="rightDiv">
+<mat-grid-list cols="4" rowHeight="5:1">
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-card style="width: 100%;">
+            <button mat-raised-button color="primary" (click)="showAddRest()">Add Resturant</button>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="4">
+        <div class="example-container">
+            <table mat-table [dataSource]="data" class="mat-elevation-z8">
+                <ng-container matColumnDef="Id">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Address">
+                    <th mat-header-cell *matHeaderCellDef> Address </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Phone">
+                    <th mat-header-cell *matHeaderCellDef> Phone </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-raised-button color="warn" (click)="DeleteRest(element.Id)">Delete</button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay ; sticky: true "></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" class="example-element-row"
+                    (click)="onRowClick(row)"></tr>
+            </table>
+        </div>
+    </mat-grid-tile>
+    
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
         <router-outlet></router-outlet>
-    </div>
-</div>
+    </mat-grid-tile>
+</mat-grid-list>

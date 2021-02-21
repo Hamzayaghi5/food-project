@@ -1,4 +1,5 @@
-<div style="padding-left: 1%; border: 2px solid rgb(112, 37, 146) ;">
+<mat-card style="width: 100%;">
+    <h3>Resturant Details</h3>
     <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput placeholder="Name" [(ngModel)]="rest.Name" required>
@@ -12,4 +13,4 @@
         <input matInput placeholder="Phone" [(ngModel)]="rest.Phone" required>
     </mat-form-field><br>
     <button mat-raised-button color="primary" (click)="UpdateRest(rest)">Update</button>
-</div>
+</mat-card>
