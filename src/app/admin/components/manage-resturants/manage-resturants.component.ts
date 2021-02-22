@@ -36,7 +36,10 @@ export class ManageResturantsComponent implements OnInit {
   onRowClick(row:Resturant) {
     this.selectedRest = row;
     this.router.navigate(['rest-details', row.Id], { relativeTo: this.route });
+  }
 
+  ManageMeals(id:number){
+    this.router.navigate(['admin/rest-meals',id]);
   }
 
 }

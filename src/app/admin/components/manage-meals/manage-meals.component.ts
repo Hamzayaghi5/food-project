@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meal } from '../../models/meal';
 
 @Component({
   selector: 'app-manage-meals',
@@ -10,6 +11,12 @@ export class ManageMealsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+  showAddmeal() {
+
+  }
+  onRowClick(row: Meal) {
+
   }
 
 }

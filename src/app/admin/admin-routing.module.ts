@@ -9,10 +9,14 @@ import { AdminbasecontentComponent } from './components/adminbasecontent/adminba
 const routes: Routes = [
   {
     path: 'admin', component: AdminbasecontentComponent, children: [{
-      path: 'mange-rests', component: ManageResturantsComponent, children: [
+      path: 'mange-rests', component: ManageResturantsComponent, children:
+       [
         { path: 'add-new-rest', component: AddResturantComponent },
         { path: 'rest-details/:id', component: ResturantDetailsComponent },
       ]
+    },
+    {
+      path: 'rest-meals/:rest_id', component: ManageMealsComponent
     }]
   }
 
