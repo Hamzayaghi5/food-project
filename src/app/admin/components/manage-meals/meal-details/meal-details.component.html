@@ -1,0 +1,16 @@
+<mat-card style="width: 100%;">
+    <h3>Meal Details</h3>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" [(ngModel)]="meal.Name" required>
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput placeholder="Description" [(ngModel)]="meal.Description" required>
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput placeholder="Price" [(ngModel)]="meal.Price" required>
+    </mat-form-field><br>
+    <button mat-raised-button color="primary" (click)="UpdateMeal(meal)">Update</button>
+</mat-card>

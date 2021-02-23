@@ -52,8 +52,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { AddMealComponent } from './components/manage-meals/add-meal/add-meal.component';
+import { MealDetailsComponent } from './components/manage-meals/meal-details/meal-details.component';
 @NgModule({
-  declarations: [ManageResturantsComponent, ManageMealsComponent, AddResturantComponent, ResturantDetailsComponent, AdminbasecontentComponent],
+  declarations: [ManageResturantsComponent, ManageMealsComponent, AddResturantComponent, ResturantDetailsComponent, AdminbasecontentComponent, AddMealComponent, MealDetailsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

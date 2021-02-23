@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, JsonpClientBackend } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Resturant } from '../models/resturant';
+import { Meal, vmMeal } from '../models/meal';
 import * as config from '../../config';
 @Injectable({
   providedIn: 'root'
@@ -32,4 +33,28 @@ export class AdminServiceService {
     return this.http.put<Resturant>(config.ApiUrl + 'api/Restaurants/' + rest.Id,
       JSON.stringify(rest), { headers: this.getHeaders() });
   }
+
+  ///////////////////////////////////
+  getMealsOfRestaurant(id: number): Observable<Meal[]> {
+    return this.http.get<Meal[]>(config.ApiUrl + 'api/Meals/OfRestaurant/' + id);
+  }
+
+  getMealById(id: number): Observable<vmMeal> {
+    return this.http.get<vmMeal>(config.ApiUrl + 'api/Meals/' + id);
+  }
+
+
+  DeleteMeal(id: number) {
+    return this.http.delete(config.ApiUrl + 'api/Meals/' + id);
+  }
+
+
+  UpdateMeal(meal: Meal): Observable<Meal> {
+    return this.http.put<Meal>(config.ApiUrl + 'api/Meals/' + meal.Id,
+      JSON.stringify(meal), { headers: this.getHeaders() });
+  }
+  addMeal(meal: Meal) {
+    return this.http.post(config.ApiUrl + 'api/Meals', JSON.stringify(meal), { headers: this.getHeaders() });
+  }
+
 }

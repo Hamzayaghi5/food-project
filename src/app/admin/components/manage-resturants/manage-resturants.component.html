@@ -4,7 +4,8 @@
             <button mat-raised-button color="primary" (click)="showAddRest()">Add Resturant</button>
         </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="4">
+    <br>
+    <mat-grid-tile [colspan]="3" [rowspan]="6">
         <div class="example-container">
             <table mat-table [dataSource]="data" class="mat-elevation-z8">
                 <ng-container matColumnDef="Id">
@@ -27,8 +28,8 @@
                     <th mat-header-cell *matHeaderCellDef> Action </th>
                     <td mat-cell *matCellDef="let element">
                         <button mat-raised-button color="warn" (click)="DeleteRest(element.Id)">Delete</button>
-                        <button style="margin-left:5px"  mat-raised-button color="primary"
-                         (click)="ManageMeals(element.Id)">Manage Meals</button>
+                        <button style="margin-left:5px" mat-raised-button color="primary"
+                            (click)="ManageMeals(element.Id)">Manage Meals</button>
 
                     </td>
                 </ng-container>
@@ -38,8 +39,8 @@
             </table>
         </div>
     </mat-grid-tile>
-    
+
     <mat-grid-tile [colspan]="1" [rowspan]="4">
         <router-outlet></router-outlet>
-    </mat-grid-tile> 
+    </mat-grid-tile>
 </mat-grid-list>

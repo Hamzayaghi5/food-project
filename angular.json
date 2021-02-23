@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "food-project"
+  "defaultProject": "food-project",
+  "cli": {
+    "analytics": false
+  }
 }
