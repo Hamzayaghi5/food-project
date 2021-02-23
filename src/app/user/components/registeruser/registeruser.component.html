@@ -1,0 +1,99 @@
+<mat-card>
+    <mat-progress-bar mode="indeterminate" *ngIf="true"></mat-progress-bar><br>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="RegisterForm" (ngSubmit)="onRegisterFormSubmit($event)">
+            <mat-vertical-stepper [linear]="true" #stepper>
+                <mat-step>
+                    <ng-template matStepLabel>Basic Info:</ng-template>
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="example@example.domain" fromControlName="Email">
+                    </mat-form-field>
+                    <div *ngIf="submitted && f.Email.errors">
+                        <mat-error *ngIf="f.Email.errors.required">Email is required</mat-error>
+                        <mat-error *ngIf="f.Email.errors.email">Email is Invalid</mat-error>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>UserName</mat-label>
+                        <input matInput placeholder="UserName" fromControlName="UserName">
+                    </mat-form-field>
+                    <div *ngIf="submitted && f.UserName.errors">
+                        <mat-error *ngIf="f.UserName.errors.required">UserName is required</mat-error>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" fromControlName="Password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <div *ngIf="submitted && f.Password.errors">
+                        <mat-error *ngIf="f.Password.errors.required"> Password is required</mat-error>
+                        <mat-error *ngIf="f.Password.errors.pattern"> Password is Invalid</mat-error>
+                        <mat-error *ngIf="f.Password.errors.minlength"> Password At Least 6 characters</mat-error>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Password Confirm</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" fromControlName="passConfirm">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <div *ngIf="submitted && f.passConfirm.errors">
+                        <mat-error *ngIf="f.passConfirm.errors.required"> Password Confimation is required
+                        </mat-error>
+                        <mat-error *ngIf="f.passConfirm.errors.mustMatch"> Password Confimation MisMatch
+                        </mat-error>
+                    </div>
+                    <div>
+                        <button mat-button matStepperNext type="button">Next</button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>User Info:</ng-template>
+                    <mat-form-field>
+                        <mat-label>First Name</mat-label>
+                        <input matInput placeholder="First Name" fromControlName="FirstName">
+                    </mat-form-field>
+                    <div *ngIf="submitted && f.FirstName.errors">
+                        <mat-error *ngIf="f.FirstName.errors.required">FirstName is required</mat-error>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Last Name</mat-label>
+                        <input matInput placeholder="First Name" fromControlName="LastName">
+                    </mat-form-field>
+                    <div *ngIf="submitted && f.LastName.errors">
+                        <mat-error *ngIf="f.LastName.errors.required">LastName is required</mat-error>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <input matInput placeholder="First Name" fromControlName="Phone">
+                    </mat-form-field>
+                    <div *ngIf="submitted && f.Phone.errors">
+                        <mat-error *ngIf="f.Phone.errors.required">Phone is required</mat-error>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Mobile</mat-label>
+                        <input matInput placeholder="First Name" fromControlName="Mobile">
+                    </mat-form-field>
+                    <div *ngIf="submitted && f.Mobile.errors">
+                        <mat-error *ngIf="f.Mobile.errors.required">Mobile is required</mat-error>
+                        <mat-error
+                            *ngIf="f.Mobile.errors.maxLength ||f.Mobile.errors.minLength || f.Mobile.errors.pattern">
+                            Mobile is Invalid</mat-error>
+
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious type="button">Back</button>
+                        <button mat-button (click)="stepper.reset()" type="button">Reset</button>
+                        <button mat-raised-button color="primary" type="submit" [disabled]="RegisterForm.invalid">Submit</button>
+                    </div>
+
+                </mat-step>
+            </mat-vertical-stepper>
+        </form>
+    </mat-card-content>
+</mat-card>
