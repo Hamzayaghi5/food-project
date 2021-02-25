@@ -49,8 +49,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ViewMyInvitationsComponent } from './components/userprofile/view-my-invitations/view-my-invitations.component';
+import { AddInitiativeComponent } from './components/userprofile/add-initiative/add-initiative.component';
 @NgModule({
-  declarations: [RegisteruserComponent, UserprofileComponent, ViewMyInvitationsComponent,],
+  declarations: [RegisteruserComponent, UserprofileComponent, ViewMyInvitationsComponent,AddInitiativeComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
