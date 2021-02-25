@@ -20,14 +20,8 @@
     <mat-drawer #drawer class="example-sidenav" mode="side">
         <h1>User Profile</h1>
         <mat-selection-list #shoes [multiple]="false">
-            <mat-list-option [value]="'Initiative'">
-                Create Initiative
-            </mat-list-option>
-            <mat-list-option [value]="'Invitations'">
-                My Invitations
-            </mat-list-option>
-            <mat-list-option [value]="'MealRequests'">
-                Meal Requests
+            <mat-list-option *ngFor="let option of matDrawerLinks" [value]="option" (click)="DrawerNavigate(option)">
+                {{option}}
             </mat-list-option>
         </mat-selection-list>
         <form [formGroup]="UpdateProfileForm">

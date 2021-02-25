@@ -5,6 +5,7 @@ import { User, Person, LoginModel, TokenResponse } from '../models/user';
 import { getHeaders } from "../../helpers/getHeaders";
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry, map } from 'rxjs/operators';
+import { Initiative } from '../models/initiative';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,9 @@ export class UserserviceService {
   private loggedInUser: LoginModel;
   private isLogged: boolean = false;
   constructor(private http: HttpClient) { }
-
+  AddInitiative(init: Initiative) {
+    return this.http.post(config.ApiUrl + 'api/Initiatives', init, { headers: getHeaders() });
+  }
   RegisterUser(user: User) {
     return this.http.post(config.ApiUrl + 'api/account/register', user, { headers: getHeaders() });
   }
@@ -28,6 +31,8 @@ export class UserserviceService {
       pipe(
         map(at => {
           if (at) {
+            console.log(at);
+
             if (!this.loggedInUser)
               this.loggedInUser = new LoginModel();
 
@@ -35,6 +40,7 @@ export class UserserviceService {
             this.loggedInUser.userName = at.userName;
             this.loggedInUser.token = at.access_token;
             this.loggedInUser.expires = new Date(at[".expires"]);
+            this.loggedInUser.personId = at.personId;
 
             if (this.tokenIsValid()) {
               this.isLogged = true;

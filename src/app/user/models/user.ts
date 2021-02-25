@@ -27,6 +27,8 @@ export class LoginModel {
     tokenType: string;
     issued: Date;
     expires: Date;
+    personId: string;
+
 }
 
 export class TokenResponse {
@@ -36,4 +38,5 @@ export class TokenResponse {
     userName: string;
     ".expires": string;
     ".issued": string;
+    personId: string;
 }

@@ -59,10 +59,6 @@ export class RegisteruserComponent implements OnInit {
     let _id: string;
     this.serv.UserLogin(_username, _password).subscribe(res => {
       console.log(res);
-      this.serv.SearchUser(_username).subscribe(res => {
-        _id = res[0].Id;
-        localStorage.setItem('LoggedID', _id);
-      });
       this._lprogressBar = false;
     }, error => {
       console.log(error);

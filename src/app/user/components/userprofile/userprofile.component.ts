@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MustMatch } from "../../../helpers/must-match";
 
 @Component({
@@ -11,7 +12,8 @@ export class UserprofileComponent implements OnInit {
   UpdateProfileForm: FormGroup;
   submitted: boolean = false;
   hide: boolean = true;
-  constructor(private fb: FormBuilder) { }
+  matDrawerLinks: string[] = ['Create Initiative', 'My Invitations', 'Meal Requests'];
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.UpdateProfileForm = this.fb.group({
@@ -29,7 +31,18 @@ export class UserprofileComponent implements OnInit {
     return this.UpdateProfileForm.controls;
   }
   UserLogout() {
-      console.log(localStorage.getItem('currentUser'));
+    console.log(localStorage.getItem('currentUser'));
+  }
+
+  DrawerNavigate(option: string) {
+    switch (option) {
+      case 'Create Initiative': this.router.navigate(['add-initiative'], { relativeTo: this.route });
+        break;
+
+      case 'My Invitations':
+      case 'Meal Requests':
+
+    }
   }
 
 
