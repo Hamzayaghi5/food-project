@@ -10,7 +10,13 @@ import { Initiative } from '../models/initiative';
   providedIn: 'root'
 })
 export class UserserviceService {
-  private loggedInUser: LoginModel;
+  private _loggedInUser: LoginModel;
+  public get loggedInUser(): LoginModel {
+    return this._loggedInUser;
+  }
+  public set loggedInUser(value: LoginModel) {
+    this._loggedInUser = value;
+  }
   private isLogged: boolean = false;
   constructor(private http: HttpClient) { }
   AddInitiative(init: Initiative) {
@@ -124,6 +130,8 @@ export class UserserviceService {
     return throwError('Could not get access token from server; please try again later.');
   }
 
-
+  getInitiativeById(id: number): Observable <Initiative[]> {
+    return this.http.get<Initiative[]>(config.ApiUrl + 'api/initiatives/ofPerson/' + id);
+  }
 
 }

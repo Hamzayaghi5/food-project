@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MustMatch } from "../../../helpers/must-match";
+import { UserserviceService } from '../../services/userservice.service';
 
 @Component({
   selector: 'app-userprofile',
@@ -13,7 +14,8 @@ export class UserprofileComponent implements OnInit {
   submitted: boolean = false;
   hide: boolean = true;
   matDrawerLinks: string[] = ['Create Initiative', 'My Invitations', 'Meal Requests'];
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute,
+    private serv:UserserviceService) { }
 
   ngOnInit(): void {
     this.UpdateProfileForm = this.fb.group({
@@ -39,7 +41,8 @@ export class UserprofileComponent implements OnInit {
       case 'Create Initiative': this.router.navigate(['add-initiative'], { relativeTo: this.route });
         break;
 
-      case 'My Invitations':
+      case 'My Invitations':this.router.navigate(['view-my-invitation',this.serv.loggedInUser.personId], { relativeTo: this.route });
+      break;
       case 'Meal Requests':
 
     }
