@@ -19,6 +19,17 @@
     </mat-drawer-content>
     <mat-drawer #drawer class="example-sidenav" mode="side">
         <h1>User Profile</h1>
+        <mat-selection-list #shoes [multiple]="false">
+            <mat-list-option [value]="'Initiative'">
+                Create Initiative
+            </mat-list-option>
+            <mat-list-option [value]="'Invitations'">
+                My Invitations
+            </mat-list-option>
+            <mat-list-option [value]="'MealRequests'">
+                Meal Requests
+            </mat-list-option>
+        </mat-selection-list>
         <form [formGroup]="UpdateProfileForm">
             <mat-form-field>
                 <mat-label>Email</mat-label>
@@ -98,6 +109,6 @@
                     [disabled]="UpdateProfileForm.invalid">Submit</button>
             </div>
         </form>
-
+        <button mat-raised-button color="primary" (click)="UserLogout()">Submit</button>
     </mat-drawer>
 </mat-drawer-container>

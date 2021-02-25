@@ -17,7 +17,11 @@ export class ManageMealsComponent implements OnInit {
   meals: Meal[] = [];
   selectedMeal: Meal = new Meal();
 
+<<<<<<< HEAD
   columnsToDisplay: string[] = ['Id', 'Name', 'Description', 'Price', 'IsActive', 'Action'];
+=======
+  columnsToDisplay: string[] = ['Id', 'Name', 'Description', 'Price', 'Action','IsActive'];
+>>>>>>> ebaa62b5f5bd81a5a04d670f38a157d93098db78
 
   constructor(private serv: AdminServiceService, private router: Router, private route: ActivatedRoute) { }
 

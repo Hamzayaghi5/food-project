@@ -1,14 +1,26 @@
-<mat-list role="list">
+<!-- <mat-list role="list">
     <mat-list-item role="listitem"> Restaurant Name : {{rest.Name}} @{{rest.Address}} - {{rest.Phone}}</mat-list-item>
-</mat-list>
+</mat-list> -->
+
+
+
+
 
 <br>
 <br>
-<ul>
-    <li *ngFor="let m of meals"> {{m.Id}} {{m.Name}} {{m.Description}} {{m.Price}}</li>
-</ul>
+
 
 <mat-grid-list cols="4" rowHeight="5:1">
+  <mat-grid-tile [colspan]="3" [rowspan]="3">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>Resturant Name: {{rest.Name}}</mat-card-title>
+        <mat-card-subtitle style="font-size: 14pt;">{{rest.Address}}</mat-card-subtitle>
+      </mat-card-header>
+      <div mat-card-image></div>
+    </mat-card>
+</mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-card style="width: 100%;">
             <button mat-raised-button color="primary" (click)="showAddMeal()">Add Meal</button>
@@ -36,9 +48,15 @@
                     <td mat-cell *matCellDef="let element"> {{element.Price}} </td>
                 </ng-container>
                 <ng-container matColumnDef="IsActive">
+<<<<<<< HEAD
                     <th mat-header-cell *matHeaderCellDef> Is Active </th>
                     <td mat-cell *matCellDef="let element"> {{element.IsActive}} </td>
                 </ng-container>
+=======
+                  <th mat-header-cell *matHeaderCellDef> IsActive </th>
+                  <td mat-cell *matCellDef="let element"> {{element.IsActive}} </td>
+              </ng-container>
+>>>>>>> ebaa62b5f5bd81a5a04d670f38a157d93098db78
                 <ng-container matColumnDef="Action">
                     <th mat-header-cell *matHeaderCellDef> Action </th>
                     <td mat-cell *matCellDef="let element">
