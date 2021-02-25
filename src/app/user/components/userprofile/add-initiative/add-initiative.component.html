@@ -1,5 +1,5 @@
-<mat-grid-list cols="6" rowHeight="6:1">
-    <mat-grid-tile [colspan]="6" [rowspan]="4">
+<mat-grid-list cols="6" rowHeight="4:1">
+    <mat-grid-tile [colspan]="6" [rowspan]="2">
         <mat-card style="width: 100%;">
             <form [formGroup]="addInitiativeForm" (ngSubmit)="onAddInitiativeFormSubmit($event)">
                 <mat-form-field>
@@ -22,5 +22,55 @@
                 </span>
             </form>
         </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="6" [rowspan]="6">
+        <div class="example-container">
+            <table mat-table [dataSource]="Initiatives" class="mat-elevation-z8">
+                <ng-container matColumnDef="Id">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="InitiatorId">
+                    <th mat-header-cell *matHeaderCellDef> InitiatorId </th>
+                    <td mat-cell *matCellDef="let element"> {{element.InitiatorId}} </td>
+                </ng-container>
+                <ng-container matColumnDef="InitiatorName">
+                    <th mat-header-cell *matHeaderCellDef> InitiatorName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.InitiatorName}} </td>
+                </ng-container>
+                <ng-container matColumnDef="RestaurantId">
+                    <th mat-header-cell *matHeaderCellDef> RestaurantId </th>
+                    <td mat-cell *matCellDef="let element"> {{element.RestaurantId}} </td>
+                </ng-container>
+                <ng-container matColumnDef="RestaurantName">
+                    <th mat-header-cell *matHeaderCellDef> RestaurantName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.RestaurantName}} </td>
+                </ng-container>
+                <ng-container matColumnDef="DayOfInitiative">
+                    <th mat-header-cell *matHeaderCellDef>DayOfInitiative </th>
+                    <td mat-cell *matCellDef="let element"> {{element.DayOfInitiative}} </td>
+                </ng-container>
+                <ng-container matColumnDef="ExpectedCallTime">
+                    <th mat-header-cell *matHeaderCellDef>ExpectedCallTime </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ExpectedCallTime}} </td>
+                </ng-container>
+                <ng-container matColumnDef="IsActive">
+                    <th mat-header-cell *matHeaderCellDef> IsActive </th>
+                    <td mat-cell *matCellDef="let element"> {{element.IsActive}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-raised-button color="warn" (click)="InvitesOfInit(element.Id)">Invite</button>
+                        <button style="margin-left:5px" mat-raised-button color="primary"
+                            (click)="DisableInit(row)">Disable</button>
+
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay ; sticky: true "></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" class="example-element-row"
+                    (click)="onRowClick(row)"></tr>
+            </table>
+        </div>
     </mat-grid-tile>
 </mat-grid-list>

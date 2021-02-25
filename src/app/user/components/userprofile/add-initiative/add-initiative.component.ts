@@ -13,10 +13,16 @@ import { Initiative } from "../../../models/initiative";
 })
 export class AddInitiativeComponent implements OnInit {
   rests: Resturant[] = [];
+  Initiatives: Initiative[] = [];
   addInitiativeForm: FormGroup;
   submitted: boolean = false;
+  columnsToDisplay: string[] = ['Id', 'InitiatorId', 'InitiatorName', 'RestaurantId', 'RestaurantName', 'DayOfInitiative', 'ExpectedCallTime', 'IsActive', 'Actions'];
+  login = new LoginModel();
   constructor(private restServ: AdminServiceService, private fb: FormBuilder, private matSnackBar: MatSnackBar,
-    private serv: UserserviceService) { }
+    private serv: UserserviceService) {
+    this.login = JSON.parse(localStorage.getItem('currentUser'));
+
+  }
 
   ngOnInit(): void {
     this.addInitiativeForm = this.fb.group({
@@ -26,6 +32,10 @@ export class AddInitiativeComponent implements OnInit {
     this.restServ.getResturants().subscribe(rests => {
       console.log(rests);
       this.rests = rests;
+    });
+    this.serv.getInitiativeByPersone(+this.login.personId).subscribe(res => {
+      console.log(res);
+      this.Initiatives = res;
     });
   }
 
@@ -40,16 +50,11 @@ export class AddInitiativeComponent implements OnInit {
       return;
     }
     let x = new Initiative();
-    let login = new LoginModel();
-    login = JSON.parse(localStorage.getItem('currentUser'));
-    x.InitiatorId = login.personId;
+    x.InitiatorId = this.login.personId;
     x.RestaurantId = this.addInitiativeForm.get('RestaurantId').value;
     x.ExpectedCallTime = this.addInitiativeForm.get('ExpectedCallTime').value;
     x.DayOfInitiative = (new Date()).toDateString();
     x.IsActive = true;
-    console.log(x);
-    console.log(login);
-
     this.serv.AddInitiative(x).subscribe(res => {
       console.log(res);
       this.matSnackBar.open("User Successfully Registered", "Close", {
@@ -57,6 +62,16 @@ export class AddInitiativeComponent implements OnInit {
       });
     });
 
+
+
+  }
+  onRowClick(row) {
+   
+  }
+
+  DisableInit(row){
+    console.log(row);
+    
   }
 
 }
