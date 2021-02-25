@@ -19,9 +19,18 @@ export class UserserviceService {
   }
   private isLogged: boolean = false;
   constructor(private http: HttpClient) { }
+  // Intiatives services
+  DisableInitiative(init: Initiative) {
+    return this.http.put(config.ApiUrl + 'api/Initiatives/' + init.Id, init, { headers: getHeaders() });
+  }
+  getInitiativeByPersone(id: number): Observable<Initiative[]> {
+    return this.http.get<Initiative[]>(config.ApiUrl + 'api/Initiatives/OfPerson/' + id);
+  }
   AddInitiative(init: Initiative) {
     return this.http.post(config.ApiUrl + 'api/Initiatives', init, { headers: getHeaders() });
   }
+
+  //users services
   RegisterUser(user: User) {
     return this.http.post(config.ApiUrl + 'api/account/register', user, { headers: getHeaders() });
   }

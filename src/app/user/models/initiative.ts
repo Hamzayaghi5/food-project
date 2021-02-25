@@ -5,4 +5,6 @@ export class Initiative {
     DayOfInitiative: string;
     ExpectedCallTime: string;
     IsActive: boolean;
+    InitiatorName: string;
+    RestaurantName: string;
 }
