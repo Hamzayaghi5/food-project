@@ -13,6 +13,7 @@ export class AddMealComponent implements OnInit {
 
   newMeal: Meal = new Meal();
   rest_id: number;
+
   constructor(private route: ActivatedRoute, private serv: AdminServiceService, private router: Router) { }
   ngOnInit(): void {
     this.route.paramMap.subscribe(t => {
@@ -23,6 +24,7 @@ export class AddMealComponent implements OnInit {
 
   AddNewMeal(meal: Meal) {
     meal.RestaurantId = stringify(this.rest_id);
+
     this.serv.addMeal(meal).subscribe(t => {
       console.log(t);
     });

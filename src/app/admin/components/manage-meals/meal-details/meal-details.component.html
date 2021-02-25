@@ -12,5 +12,12 @@
         <mat-label>Price</mat-label>
         <input matInput placeholder="Price" [(ngModel)]="meal.Price" required>
     </mat-form-field><br>
+
+    <mat-label>Status : DeActive </mat-label>
+    <mat-slide-toggle [color]="'primary'" [checked]="meal.IsActive" [(ngModel)]="meal.IsActive">
+        Active
+    </mat-slide-toggle>
+    <br>
+    <br>
     <button mat-raised-button color="primary" (click)="UpdateMeal(meal)">Update</button>
 </mat-card>

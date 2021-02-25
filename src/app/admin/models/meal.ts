@@ -4,7 +4,9 @@ export class Meal {
     RestaurantId: string;
     Description: string;
     Price: number;
+    IsActive: boolean;
 }
+
 
 export class vmMeal {
     Id: string;
