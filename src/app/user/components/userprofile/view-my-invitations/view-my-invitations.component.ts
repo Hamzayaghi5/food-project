@@ -11,6 +11,7 @@ import { UserserviceService } from 'src/app/user/services/userservice.service';
 export class ViewMyInvitationsComponent implements OnInit {
   initi: Initiative = new Initiative();
   data:Initiative[] = [] ;
+  columnsToDisplay: string[] = ['Id', 'InitiatorName', 'RestaurantName', 'DayOfInitiative', 'ExpectedCallTime'];
   constructor(private route: ActivatedRoute,private serv:UserserviceService) { }
 
   ngOnInit(): void {
