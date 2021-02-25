@@ -10,7 +10,7 @@ import { MustMatch } from "../../../helpers/must-match";
 export class UserprofileComponent implements OnInit {
   UpdateProfileForm: FormGroup;
   submitted: boolean = false;
-  hide:boolean=true;
+  hide: boolean = true;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -27,6 +27,9 @@ export class UserprofileComponent implements OnInit {
   }
   get f() {
     return this.UpdateProfileForm.controls;
+  }
+  UserLogout() {
+      console.log(localStorage.getItem('currentUser'));
   }
 
 
