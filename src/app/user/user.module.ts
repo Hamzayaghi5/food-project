@@ -48,8 +48,9 @@ import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { HttpClientModule } from "@angular/common/http";
+import { ViewMyInvitationsComponent } from './components/userprofile/view-my-invitations/view-my-invitations.component';
 @NgModule({
-  declarations: [RegisteruserComponent, UserprofileComponent,],
+  declarations: [RegisteruserComponent, UserprofileComponent, ViewMyInvitationsComponent,],
   imports: [
     CommonModule,
     UserRoutingModule,
