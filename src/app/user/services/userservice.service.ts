@@ -6,6 +6,7 @@ import { getHeaders } from "../../helpers/getHeaders";
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry, map } from 'rxjs/operators';
 import { Initiative } from '../models/initiative';
+import { Invitation } from '../models/Invitation';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +15,12 @@ export class UserserviceService {
   private isLogged: boolean = false;
   constructor(private http: HttpClient) { }
   // Intiatives services
+  getInitiativeInvitations(id): Observable<Invitation[]> {
+    return this.http.get<Invitation[]>(config.ApiUrl + 'api/Invitations/OfInitiative/' + id);
+  }
+  InvitePerson(inv: Invitation) {
+    return this.http.post(config.ApiUrl + 'api/Invitations', inv, { headers: getHeaders() });
+  }
   DisableInitiative(init: Initiative) {
     return this.http.put(config.ApiUrl + 'api/Initiatives/' + init.Id, init, { headers: getHeaders() });
   }
@@ -23,8 +30,14 @@ export class UserserviceService {
   AddInitiative(init: Initiative) {
     return this.http.post(config.ApiUrl + 'api/Initiatives', init, { headers: getHeaders() });
   }
+  getInitiativebyId(id: number): Observable<Initiative> {
+    return this.http.get<Initiative>(config.ApiUrl + 'api/Initiatives/' + id);
+  }
 
   //users services
+  getPeople(): Observable<Person[]> {
+    return this.http.get<Person[]>(config.ApiUrl + 'api/People');
+  }
   RegisterUser(user: User) {
     return this.http.post(config.ApiUrl + 'api/account/register', user, { headers: getHeaders() });
   }

@@ -5,4 +5,6 @@ export class Invitation {
   Comment: string;
   IsAccepted: boolean;
   SeenAt: string;
+  PersonName: string;
+  InitiatorName: string;
 }

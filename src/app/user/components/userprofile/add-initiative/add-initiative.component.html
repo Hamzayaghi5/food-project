@@ -63,7 +63,7 @@
                     <td mat-cell *matCellDef="let element">
                         <button mat-raised-button color="warn" (click)="InvitesOfInit(element.Id)">Invite</button>
                         <button style="margin-left:5px" mat-raised-button color="primary"
-                            (click)="DisableInit(row)">Disable</button>
+                            (click)="DisableInit(element.Id)">Disable</button>
 
                     </td>
                 </ng-container>

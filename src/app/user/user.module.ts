@@ -46,12 +46,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { FormsModule } from "@angular/forms";
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ViewMyInvitationsComponent } from './components/userprofile/view-my-invitations/view-my-invitations.component';
 import { AddInitiativeComponent } from './components/userprofile/add-initiative/add-initiative.component';
+import { InitiativeInvitationsComponent } from './components/userprofile/initiative-invitations/initiative-invitations.component';
 @NgModule({
-  declarations: [RegisteruserComponent, UserprofileComponent, ViewMyInvitationsComponent,AddInitiativeComponent],
+  declarations: [RegisteruserComponent, UserprofileComponent, ViewMyInvitationsComponent, AddInitiativeComponent, InitiativeInvitationsComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -100,7 +102,8 @@ import { AddInitiativeComponent } from './components/userprofile/add-initiative/
     OverlayModule,
     PortalModule,
     ScrollingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class UserModule { }

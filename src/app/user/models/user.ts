@@ -7,6 +7,7 @@ export class User {
 }
 
 export class Person {
+    Id: string;
     Email: string;
     UserName: string;
     Password: string;
