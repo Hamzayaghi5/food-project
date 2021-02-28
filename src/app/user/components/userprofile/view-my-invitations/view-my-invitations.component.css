@@ -1,0 +1,24 @@
+.example-container {
+  width: 100%;
+  height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+tr.example-element-row:hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:active {
+  background: #efefef;
+}
+mat-card-title
+{
+color: crimson;
+font-size: 25pt;
+-webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MustMatch } from "../../../helpers/must-match";
+import { LoginModel } from '../../models/user';
+import { UserserviceService } from '../../services/userservice.service';
 
 @Component({
   selector: 'app-userprofile',
@@ -9,13 +11,16 @@ import { MustMatch } from "../../../helpers/must-match";
   styleUrls: ['./userprofile.component.css']
 })
 export class UserprofileComponent implements OnInit {
+  login = new LoginModel();
   UpdateProfileForm: FormGroup;
   submitted: boolean = false;
   hide: boolean = true;
   matDrawerLinks: string[] = ['Create Initiative', 'My Invitations', 'Meal Requests'];
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute,
+    private serv:UserserviceService) { }
 
   ngOnInit(): void {
+    this.login = JSON.parse(localStorage.getItem('currentUser'));
     this.UpdateProfileForm = this.fb.group({
       Email: ['', Validators.compose([Validators.required, Validators.email])],
       UserName: ['', Validators.compose([Validators.required])],
@@ -39,7 +44,8 @@ export class UserprofileComponent implements OnInit {
       case 'Create Initiative': this.router.navigate(['add-initiative'], { relativeTo: this.route });
         break;
 
-      case 'My Invitations':
+      case 'My Invitations':this.router.navigate(['view-my-invitation',this.login.personId], { relativeTo: this.route });
+      break;
       case 'Meal Requests':
 
     }
