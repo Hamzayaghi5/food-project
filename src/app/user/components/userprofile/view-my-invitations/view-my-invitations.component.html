@@ -1,54 +1,47 @@
-<mat-grid-list cols="4" rowHeight="5:1">
-  <!-- <mat-grid-tile [colspan]="3" [rowspan]="3">
-      <mat-card>
-          <mat-card-header>
-              <div mat-card-avatar></div>
-              <mat-card-title>Resturant Name: {{rest.Name}}</mat-card-title>
-              <mat-card-subtitle style="font-size: 14pt;">{{rest.Address}}</mat-card-subtitle>
-          </mat-card-header>
-          <div mat-card-image></div>
-      </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="4" [rowspan]="1">
-      <mat-card style="width: 100%;">
-          <button mat-raised-button color="primary" (click)="showAddMeal()">Add Meal</button>
-      </mat-card>
-  </mat-grid-tile> -->
-  <br>
-  <br>
+<mat-grid-list cols="6" rowHeight="4:1">
 
-  <mat-grid-tile [colspan]="3" [rowspan]="6">
-      <div class="example-container">
-          <table mat-table [dataSource]="data" class="mat-elevation-z8">
-              <ng-container matColumnDef="Id">
-                  <th mat-header-cell *matHeaderCellDef> Id. </th>
-                  <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
-              </ng-container>
-              <ng-container matColumnDef="InitiatorName">
-                  <th mat-header-cell *matHeaderCellDef> InitiatorName </th>
-                  <td mat-cell *matCellDef="let element"> {{element.InitiatorName}} </td>
-              </ng-container>
-              <ng-container matColumnDef="RestaurantName">
-                  <th mat-header-cell *matHeaderCellDef> RestaurantName </th>
-                  <td mat-cell *matCellDef="let element"> {{element.RestaurantName}} </td>
-              </ng-container>
-              <ng-container matColumnDef="DayOfInitiative">
-                  <th mat-header-cell *matHeaderCellDef> DayOfInitiative </th>
-                  <td mat-cell *matCellDef="let element"> {{element.DayOfInitiative}} </td>
-              </ng-container>
-              <ng-container matColumnDef="ExpectedCallTime">
-                  <th mat-header-cell *matHeaderCellDef> ExpectedCallTime </th>
-                  <td mat-cell *matCellDef="let element"> {{element.ExpectedCallTime}} </td>
-              </ng-container>
-              <tr mat-header-row *matHeaderRowDef="columnsToDisplay ; sticky: true "></tr>
-              <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" class="example-element-row"
-                  (click)="onRowClick(row)"></tr>
-          </table>
-      </div>
-  </mat-grid-tile>
-
-
-  <mat-grid-tile [colspan]="1" [rowspan]="6">
-      <router-outlet></router-outlet>
-  </mat-grid-tile>
+    <mat-grid-tile [colspan]="6" [rowspan]="4">
+        <div class="example-container">
+            <table mat-table [dataSource]="myInvitations" class="mat-elevation-z8">
+                <ng-container matColumnDef="Id">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="InitiatorName">
+                    <th mat-header-cell *matHeaderCellDef> InitiatorName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.InitiatorName}} </td>
+                </ng-container>
+                <ng-container matColumnDef="PersonName">
+                    <th mat-header-cell *matHeaderCellDef> PersonName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.PersonName}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Comment">
+                    <th mat-header-cell *matHeaderCellDef> Comment </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Comment}} </td>
+                </ng-container>
+                <ng-container matColumnDef="IsAccepted">
+                    <th mat-header-cell *matHeaderCellDef> IsAccepted </th>
+                    <td mat-cell *matCellDef="let element"> {{element.IsAccepted}} </td>
+                </ng-container>
+                <ng-container matColumnDef="SeenAt">
+                    <th mat-header-cell *matHeaderCellDef>SeenAt </th>
+                    <td mat-cell *matCellDef="let element"> {{element.SeenAt}} </td>
+                </ng-container>
+                <ng-container matColumnDef="PersonId">
+                    <th mat-header-cell *matHeaderCellDef>PersonId </th>
+                    <td mat-cell *matCellDef="let element"> {{element.PersonId}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-raised-button color="primary" (click)="AcceptInvite(element.Id)">Accept</button>
+                        <button mat-raised-button color="warn" (click)="DeclineInvite(element.Id)">Accept</button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay ; sticky: true "></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" class="example-element-row"
+                    (click)="onRowClick(row)"></tr>
+            </table>
+        </div>
+    </mat-grid-tile> 
 </mat-grid-list>

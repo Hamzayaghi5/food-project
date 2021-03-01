@@ -1,0 +1,20 @@
+<form [formGroup]="MealRequestForm" (ngSubmit)="onMealRequestFormSubmit($event)">
+    <h1 mat-dialog-title>Meal Request</h1>
+    <div mat-dialog-content>
+        <p>New Meal</p>
+        <mat-form-field>
+            <mat-label>Meals:</mat-label>
+            <mat-select formControlName="MealId">
+                <mat-option *ngFor="let m of Meals" [value]="m.Id">{{m.Name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Count:</mat-label>
+            <input matInput type="number" placeholder="Meal Count" formControlName="Count">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()" type="button">Decline</button>
+        <button mat-button cdkFocusInitial type="submit">Accept</button>
+    </div>
+</form>

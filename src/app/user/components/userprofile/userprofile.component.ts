@@ -15,9 +15,9 @@ export class UserprofileComponent implements OnInit {
   UpdateProfileForm: FormGroup;
   submitted: boolean = false;
   hide: boolean = true;
-  matDrawerLinks: string[] = ['Create Initiative', 'My Invitations', 'Meal Requests'];
+  matDrawerLinks: string[] = ['Create Initiative', 'My Invitations'];
   constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute,
-    private serv:UserserviceService) { }
+    private serv: UserserviceService) { }
 
   ngOnInit(): void {
     this.login = JSON.parse(localStorage.getItem('currentUser'));
@@ -43,10 +43,8 @@ export class UserprofileComponent implements OnInit {
     switch (option) {
       case 'Create Initiative': this.router.navigate(['add-initiative'], { relativeTo: this.route });
         break;
-
-      case 'My Invitations':this.router.navigate(['view-my-invitation',this.login.personId], { relativeTo: this.route });
-      break;
-      case 'Meal Requests':
+      case 'My Invitations': this.router.navigate(['view-my-invitation'], { relativeTo: this.route });
+        break;
 
     }
   }

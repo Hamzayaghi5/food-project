@@ -7,6 +7,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry, map } from 'rxjs/operators';
 import { Initiative } from '../models/initiative';
 import { Invitation } from '../models/Invitation';
+import { MealRequest } from '../models/meal-request';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +21,17 @@ export class UserserviceService {
   }
   private isLogged: boolean = false;
   constructor(private http: HttpClient) { }
+  //meal Request
+  MealRequest(mr: MealRequest) {
+    return this.http.post(config.ApiUrl + 'api/vmMealRequests', mr, { headers: getHeaders() });
+  }
+  getMealRequests(InitId): Observable<MealRequest[]> {
+    return this.http.get<MealRequest[]>(config.ApiUrl + 'api/MealRequests/OfInitiative/' + InitId);
+  }
+  //invitations
+  AcceptInvitation(inv: Invitation) {
+    return this.http.put(config.ApiUrl + 'api/Invitations/' + inv.Id, inv, { headers: getHeaders() });
+  }
   // Intiatives services
   getInitiativeInvitations(id): Observable<Invitation[]> {
     return this.http.get<Invitation[]>(config.ApiUrl + 'api/Invitations/OfInitiative/' + id);
@@ -41,6 +53,9 @@ export class UserserviceService {
   }
 
   //users services
+  getPeopleById(id): Observable<Person> {
+    return this.http.get<Person>(config.ApiUrl + 'api/People' + id);
+  }
   getPeople(): Observable<Person[]> {
     return this.http.get<Person[]>(config.ApiUrl + 'api/People');
   }
@@ -152,7 +167,7 @@ export class UserserviceService {
     return throwError('Could not get access token from server; please try again later.');
   }
 
-  getInitiativeById(id: number): Observable <Initiative[]> {
+  getInitiativeByperson(id: number): Observable<Initiative[]> {
     return this.http.get<Initiative[]>(config.ApiUrl + 'api/initiatives/ofPerson/' + id);
   }
 

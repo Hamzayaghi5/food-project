@@ -5,6 +5,7 @@ import { LoginModel, Person } from 'src/app/user/models/user';
 import { Invitation } from 'src/app/user/models/Invitation';
 import { UserserviceService } from 'src/app/user/services/userservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MealRequest } from 'src/app/user/models/meal-request';
 
 @Component({
   selector: 'app-initiative-invitations',
@@ -16,9 +17,9 @@ export class InitiativeInvitationsComponent implements OnInit {
   login = new LoginModel();
   currentInit: Initiative = new Initiative();
   people: Person[] = [];
-  Invitations: Invitation[] = [];
+  MealRequests: MealRequest[] = [];
   columnsToDisplay: string[] = ['Id', 'Email', 'UserName', 'FirstName', 'LastName', 'Phone', 'Mobile', 'Actions'];
-  columnsToDisplay2: string[] = ['Id', 'PersonName', 'InitiatorName', 'Comment', 'SeenAt', 'PersonId', 'InitiativeId'];
+  columnsToDisplay2: string[] = ['Id', 'PersonName', 'MealName', 'Count', 'Price', 'TotalPrice'];
   constructor(private route: ActivatedRoute, private serv: UserserviceService, private matSnackBar: MatSnackBar) {
   }
   //Restaurant
@@ -27,6 +28,7 @@ export class InitiativeInvitationsComponent implements OnInit {
     this.route.paramMap.subscribe(t => {
       let init_id = t.get('init_id');
       this.serv.getInitiativebyId(+init_id).subscribe(res => {
+        console.log(res);
 
         this.currentInit = res;
         this.currentInit.InitiatorName = res["Person"]["AspNetUsers"]["Email"];
@@ -35,33 +37,26 @@ export class InitiativeInvitationsComponent implements OnInit {
 
 
         console.log(this.currentInit);
-        this.serv.getInitiativeInvitations(this.currentInit.Id).subscribe(res => {
+        this.serv.getMealRequests(this.currentInit.Id).subscribe(res => {
           console.log(res);
-          this.Invitations = res;
-    
+          this.MealRequests = res;
         });
-
       });
     });
     this.serv.getPeople().subscribe(res => {
       console.log(res);
       this.people = res;
     });
-   
-
   }
   onRowClick(row) {
 
   }
   InvitePerson(id) {
     console.log(id);
-
     let x = new Invitation();
     x.PersonId = id;
     x.InitiativeId = this.currentInit.Id;
     x.Comment = this.comment;
-    console.log(x);
-
     this.serv.InvitePerson(x).subscribe(res => {
       console.log(res);
       this.matSnackBar.open("Succesfully Invited", "Close", {

@@ -13,7 +13,7 @@ const routes: Routes = [
 
       { path: 'initiative-invite/:init_id', component: InitiativeInvitationsComponent }
       ,
-      { path: 'view-my-invitation/:id', component: ViewMyInvitationsComponent }
+      { path: 'view-my-invitation', component: ViewMyInvitationsComponent },
 
     ]
   }

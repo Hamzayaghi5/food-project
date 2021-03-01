@@ -1,3 +1,5 @@
+import { Invitation } from "./Invitation";
+
 export class User {
     Id: string;
     Email: string;
@@ -17,6 +19,7 @@ export class Person {
     Phone: string;
     Mobile: string;
     UserId: string;
+    Invitations: Invitation[];
 }
 
 

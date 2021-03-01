@@ -54,34 +54,30 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="6" [rowspan]="5">
         <div class="example-container">
-            <table mat-table [dataSource]="Invitations" class="mat-elevation-z8">
+            <table mat-table [dataSource]="MealRequests" class="mat-elevation-z8">
                 <ng-container matColumnDef="Id">
                     <th mat-header-cell *matHeaderCellDef> No. </th>
                     <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
                 </ng-container>
-                <ng-container matColumnDef="Email">
-                    <th mat-header-cell *matHeaderCellDef> Email </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+                <ng-container matColumnDef="PersonName">
+                    <th mat-header-cell *matHeaderCellDef> PersonName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.PersonName}} </td>
                 </ng-container>
-                <ng-container matColumnDef="UserName">
-                    <th mat-header-cell *matHeaderCellDef> UserName </th>
-                    <td mat-cell *matCellDef="let element"> {{element.UserName}} </td>
+                <ng-container matColumnDef="MealName">
+                    <th mat-header-cell *matHeaderCellDef> MealName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.MealName}} </td>
                 </ng-container>
-                <ng-container matColumnDef="FirstName">
-                    <th mat-header-cell *matHeaderCellDef> FirstName </th>
-                    <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
+                <ng-container matColumnDef="Count">
+                    <th mat-header-cell *matHeaderCellDef> Count </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Count}} </td>
                 </ng-container>
-                <ng-container matColumnDef="LastName">
-                    <th mat-header-cell *matHeaderCellDef> LastName </th>
-                    <td mat-cell *matCellDef="let element"> {{element.LastName}} </td>
+                <ng-container matColumnDef="Price">
+                    <th mat-header-cell *matHeaderCellDef> Price </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Price}} </td>
                 </ng-container>
-                <ng-container matColumnDef="Phone">
-                    <th mat-header-cell *matHeaderCellDef>Phone </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
-                </ng-container>
-                <ng-container matColumnDef="Mobile">
-                    <th mat-header-cell *matHeaderCellDef>Mobile </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Mobile}} </td>
+                <ng-container matColumnDef="TotalPrice">
+                    <th mat-header-cell *matHeaderCellDef>PersonId </th>
+                    <td mat-cell *matCellDef="let element"> {{element.TotalPrice}} </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="columnsToDisplay2 ; sticky: true "></tr>
                 <tr mat-row *matRowDef="let row; columns: columnsToDisplay2;" class="example-element-row"

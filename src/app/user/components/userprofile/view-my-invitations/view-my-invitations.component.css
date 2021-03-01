@@ -15,10 +15,3 @@ tr.example-element-row:hover {
 tr.example-element-row:active {
   background: #efefef;
 }
-mat-card-title
-{
-color: crimson;
-font-size: 25pt;
--webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-}
