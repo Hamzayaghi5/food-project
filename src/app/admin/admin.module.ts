@@ -54,8 +54,10 @@ import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { AddMealComponent } from './components/manage-meals/add-meal/add-meal.component';
 import { MealDetailsComponent } from './components/manage-meals/meal-details/meal-details.component';
+import { ManagePeopleComponent } from './components/manage-people/manage-people.component';
+import { PeopleDetailsComponent } from './components/manage-people/people-details/people-details.component';
 @NgModule({
-  declarations: [ManageResturantsComponent, ManageMealsComponent, AddResturantComponent, ResturantDetailsComponent, AdminbasecontentComponent, AddMealComponent, MealDetailsComponent],
+  declarations: [ManageResturantsComponent, ManageMealsComponent, AddResturantComponent, ResturantDetailsComponent, AdminbasecontentComponent, AddMealComponent, MealDetailsComponent, ManagePeopleComponent, PeopleDetailsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

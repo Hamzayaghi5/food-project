@@ -17,6 +17,4 @@ export class AddResturantComponent implements OnInit {
       console.log(t);
     });
   }
-
-
 }

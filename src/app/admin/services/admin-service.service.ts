@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Resturant } from '../models/resturant';
 import { Meal } from '../models/meal';
+import { People } from '../models/people';
 import * as config from '../../config';
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,13 @@ export class AdminServiceService {
     return headers;
   }
   constructor(private http: HttpClient) { }
+  //People services
+  getPeople(): Observable<People[]> {
+    return this.http.get<People[]>(config.ApiUrl + 'api/People');
+  }
+  deletePeople(id : number) {
+    return this.http.delete(config.ApiUrl + 'api/People' + id);
+  }
   //returants services
   getResturants(): Observable<Resturant[]> {
     return this.http.get<Resturant[]>(config.ApiUrl + 'api/Restaurants');
@@ -34,7 +42,7 @@ export class AdminServiceService {
       JSON.stringify(rest), { headers: this.getHeaders() });
   }
 
-  ///////////////////////////////////
+  //Meals services
   getMealsOfRestaurant(id: number): Observable<Meal[]> {
     return this.http.get<Meal[]>(config.ApiUrl + 'api/Meals/OfRestaurant/' + id);
   }

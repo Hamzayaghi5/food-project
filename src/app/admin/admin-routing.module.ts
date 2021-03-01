@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ManageResturantsComponent } from "./components/manage-resturants/manage-resturants.component";
 import { ManageMealsComponent } from "./components/manage-meals/manage-meals.component";
+import { ManagePeopleComponent } from './components/manage-people/manage-people.component';
 import { AddResturantComponent } from './components/manage-resturants/add-resturant/add-resturant.component';
 import { ResturantDetailsComponent } from './components/manage-resturants/resturant-details/resturant-details.component';
 import { AdminbasecontentComponent } from './components/adminbasecontent/adminbasecontent.component';
 import { AddMealComponent } from './components/manage-meals/add-meal/add-meal.component';
 import { MealDetailsComponent } from './components/manage-meals/meal-details/meal-details.component';
+import { PeopleDetailsComponent } from './components/manage-people/people-details/people-details.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,12 @@ const routes: Routes = [
         [
           { path: 'add-new-meal/:rest_id', component: AddMealComponent },
           { path: 'meal-details/:id', component: MealDetailsComponent },
+        ]
+    },
+    {
+      path: 'manage-people', component: ManagePeopleComponent, children:
+        [
+          { path: 'people-details/:id', component: PeopleDetailsComponent },
         ]
     }]
   }
