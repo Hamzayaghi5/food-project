@@ -106,5 +106,6 @@ import { InitiativeInvitationsComponent } from './components/userprofile/initiat
     HttpClientModule,
     FormsModule
   ]
+  , entryComponents: [DialogOverviewExampleDialog]
 })
 export class UserModule { }

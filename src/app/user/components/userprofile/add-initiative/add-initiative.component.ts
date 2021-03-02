@@ -33,6 +33,8 @@ export class AddInitiativeComponent implements OnInit {
     this.restServ.getResturants().subscribe(rests => {
       console.log(rests);
       this.rests = rests;
+      console.log(rests);
+
     });
     this.serv.getInitiativeByPersone(+this.login.personId).subscribe(res => {
       console.log(res);

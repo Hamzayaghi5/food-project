@@ -21,7 +21,7 @@ export class ViewMyInvitationsComponent implements OnInit {
   people: Person[] = [];
 
 
-  columnsToDisplay: string[] = ['Id', 'InitiatorName', 'PersonName', 'Comment', 'IsAccepted', 'SeenAt', 'PersonId', 'Actions'];
+  columnsToDisplay: string[] = ['Id', 'InitiatorName', 'PersonName', 'Comment', 'IsAccepted', 'SeenAt', 'PersonId'];
   constructor(private route: ActivatedRoute, public dialog: MatDialog,
     private serv: UserserviceService, private matSnackBar: MatSnackBar) { }
 
@@ -29,34 +29,15 @@ export class ViewMyInvitationsComponent implements OnInit {
     this.login = JSON.parse(localStorage.getItem('currentUser'));
     this.serv.getPeopleById(this.login.personId).subscribe(res => {
       console.log(res);
-      res.Invitations = this.myInvitations;
-    });
-  }
-  AcceptInvite(id) {
-    let inv = new Invitation;
-    inv = this.myInvitations.filter(x => x.Id = id)[0];
-    inv.IsAccepted = true;
-    inv.SeenAt = (new Date()).toDateString();
-    this.serv.AcceptInvitation(inv).subscribe(res => {
-      console.log(res);
-      this.matSnackBar.open("Invitation Accepted", "close", { duration: 3000 });
-    });
-  }
 
-  DeclineInvite(id) {
-    let inv = new Invitation;
-    inv = this.myInvitations.filter(x => x.Id = id)[0];
-    inv.IsAccepted = false;
-    inv.SeenAt = (new Date()).toDateString();
-    this.serv.AcceptInvitation(inv).subscribe(res => {
-      console.log(res);
-      this.matSnackBar.open("Invitation Accepted", "close", { duration: 3000 });
+      this.myInvitations = res.Invitation;
+      console.log(this.myInvitations);
+
     });
   }
-
   onRowClick(row: Invitation) {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
+      width: '1000px',
       data: row
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -82,6 +63,8 @@ export class DialogOverviewExampleDialog implements OnInit {
     private serv: UserserviceService, private aserv: AdminServiceService,
     private matSnackBar: MatSnackBar, public dialog: MatDialog) { }
   ngOnInit(): void {
+    console.log(this.data);
+
     this.login = JSON.parse(localStorage.getItem('currentUser'));
     this.MealRequestForm = this.fb.group({
       MealId: ['', Validators.required],
@@ -99,11 +82,12 @@ export class DialogOverviewExampleDialog implements OnInit {
   }
 
   onNoClick(): void {
+    this.DeclineInvite(1);
     this.dialogRef.close();
   }
 
   AcceptInvite(id): Invitation {
-    let inv = new Invitation;
+    let inv = new Invitation();
     inv = this.data
     inv.IsAccepted = true;
     inv.SeenAt = (new Date()).toDateString();
@@ -115,12 +99,15 @@ export class DialogOverviewExampleDialog implements OnInit {
   }
 
   DeclineInvite(id): Invitation {
-    let inv = new Invitation;
+    let inv = new Invitation();
+    inv = this.data;
     inv.IsAccepted = false;
     inv.SeenAt = (new Date()).toDateString();
+    console.log(inv);
+    
     this.serv.AcceptInvitation(inv).subscribe(res => {
       console.log(res);
-      this.matSnackBar.open("Invitation Accepted", "close", { duration: 3000 });
+      this.matSnackBar.open("Invitation Declined", "close", { duration: 3000 });
     });
     return inv;
   }

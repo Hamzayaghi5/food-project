@@ -19,7 +19,7 @@ export class Person {
     Phone: string;
     Mobile: string;
     UserId: string;
-    Invitations: Invitation[];
+    Invitation: Invitation[];
 }
 
 

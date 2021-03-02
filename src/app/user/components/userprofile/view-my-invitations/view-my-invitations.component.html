@@ -1,6 +1,5 @@
-<mat-grid-list cols="6" rowHeight="4:1">
-
-    <mat-grid-tile [colspan]="6" [rowspan]="4">
+<mat-grid-list cols="6" rowHeight="4:1"> 
+     <mat-grid-tile [colspan]="6" [rowspan]="5">
         <div class="example-container">
             <table mat-table [dataSource]="myInvitations" class="mat-elevation-z8">
                 <ng-container matColumnDef="Id">
@@ -30,14 +29,7 @@
                 <ng-container matColumnDef="PersonId">
                     <th mat-header-cell *matHeaderCellDef>PersonId </th>
                     <td mat-cell *matCellDef="let element"> {{element.PersonId}} </td>
-                </ng-container>
-                <ng-container matColumnDef="Actions">
-                    <th mat-header-cell *matHeaderCellDef> Actions </th>
-                    <td mat-cell *matCellDef="let element">
-                        <button mat-raised-button color="primary" (click)="AcceptInvite(element.Id)">Accept</button>
-                        <button mat-raised-button color="warn" (click)="DeclineInvite(element.Id)">Accept</button>
-                    </td>
-                </ng-container>
+                </ng-container> 
                 <tr mat-header-row *matHeaderRowDef="columnsToDisplay ; sticky: true "></tr>
                 <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" class="example-element-row"
                     (click)="onRowClick(row)"></tr>

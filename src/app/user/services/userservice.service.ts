@@ -12,7 +12,7 @@ import { MealRequest } from '../models/meal-request';
   providedIn: 'root'
 })
 export class UserserviceService {
-  private _loggedInUser: LoginModel;
+  private _loggedInUser: LoginModel=new LoginModel();
   public get loggedInUser(): LoginModel {
     return this._loggedInUser;
   }
@@ -54,7 +54,7 @@ export class UserserviceService {
 
   //users services
   getPeopleById(id): Observable<Person> {
-    return this.http.get<Person>(config.ApiUrl + 'api/People' + id);
+    return this.http.get<Person>(config.ApiUrl + 'api/People/' + id);
   }
   getPeople(): Observable<Person[]> {
     return this.http.get<Person[]>(config.ApiUrl + 'api/People');

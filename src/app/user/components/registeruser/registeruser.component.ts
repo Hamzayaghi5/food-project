@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { MustMatch } from "../../../helpers/must-match";
 import { Person, User } from '../../models/user';
 import { UserserviceService } from "../../services/userservice.service";
@@ -21,7 +22,8 @@ export class RegisteruserComponent implements OnInit {
   _lprogressBar: boolean = false;
   _responseError: boolean = false;
   _lresponseError: boolean = false;
-  constructor(private fb: FormBuilder, private serv: UserserviceService, private matSnackBar: MatSnackBar) { }
+  constructor(private fb: FormBuilder, private serv: UserserviceService, private matSnackBar: MatSnackBar,
+    private router: Router) { }
 
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class RegisteruserComponent implements OnInit {
       Mobile: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[09][0-9]*')])]
     }, { validator: MustMatch('Password', 'ConfirmPassword') });
     this.LoginForm = this.fb.group({
-      Email: ['', Validators.compose([Validators.required, Validators.email])],
+      Email: ['', Validators.compose([Validators.required,])],
       Password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern('[0-9 a-z A-Z !@#$%^&*()-=]*?')])],
     });
   }
@@ -60,6 +62,12 @@ export class RegisteruserComponent implements OnInit {
     this.serv.UserLogin(_username, _password).subscribe(res => {
       console.log(res);
       this._lprogressBar = false;
+      if (_username == 'Mahmoud') {
+        this.router.navigate(['admin']);
+      }
+      else {
+        this.router.navigate(['user-profile']);
+      }
     }, error => {
       console.log(error);
       this._lresponseError = true;

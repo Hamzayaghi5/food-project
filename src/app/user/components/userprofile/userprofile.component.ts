@@ -15,14 +15,14 @@ export class UserprofileComponent implements OnInit {
   UpdateProfileForm: FormGroup;
   submitted: boolean = false;
   hide: boolean = true;
-  matDrawerLinks: string[] = ['Create Initiative', 'My Invitations'];
+  matDrawerLinks: string[] = ['Create Initiative', 'My Invitations', 'Logout'];
   constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute,
     private serv: UserserviceService) { }
 
   ngOnInit(): void {
     this.login = JSON.parse(localStorage.getItem('currentUser'));
     this.UpdateProfileForm = this.fb.group({
-      Email: ['', Validators.compose([Validators.required, Validators.email])],
+      Email: ['', Validators.compose([Validators.required,])],
       UserName: ['', Validators.compose([Validators.required])],
       Password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern('[0-9 a-z A-Z !@#$%^&*()-=]*?')])],
       passConfirm: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
@@ -45,7 +45,7 @@ export class UserprofileComponent implements OnInit {
         break;
       case 'My Invitations': this.router.navigate(['view-my-invitation'], { relativeTo: this.route });
         break;
-
+      case 'Logout': this.serv.logout(); this.router.navigate(['user-register']);
     }
   }
 
